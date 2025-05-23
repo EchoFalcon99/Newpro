@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Bisma</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff0f5;
+    overflow-x: hidden;
+    text-align: center;
+  }
+  .hidden {
+    display: none;
+  }
+  #countdown {
+    font-size: 72px;
+    margin-top: 100px;
+    color: #ff1493;
+  }
+  #chat {
+    display: none;
+    max-width: 500px;
+    margin: 40px auto;
+    background: #e5ddd5;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+    position: relative;
+  }
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 75%;
+    line-height: 1.5;
+  }
+  .from-saifu {
+    background: #dcf8c6;
+    align-self: flex-start;
+  }
+  .from-bishmu {
+    background: #fff;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+  #blast {
+    display: none;
+    font-size: 32px;
+    color: #ff0000;
+    animation: explode 1s ease-in-out forwards;
+  }
+  @keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(5); opacity: 0; }
+  }
+  #loveHeart {
+    width: 80px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: drop 4s linear infinite;
+  }
+  @keyframes drop {
+    0% { top: -100px; }
+    100% { top: 100vh; }
+  }
+  #cake {
+    width: 100px;
+    margin-top: 20px;
+  }
+  #musicControl {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+</style>
+</head>
+<body><div id="countdown">5</div><div id="chat">
+  <div class="message from-saifu">Saifu: Hello cutie</div>
+  <div class="message from-bishmu">Bishmu: Chup krjao</div>
+  <div class="message from-saifu">Saifu: Golu molu</div>
+  <div class="message from-bishmu">Bishmu: Hahaha</div>
+  <div class="message from-saifu">Saifu: "Jaan-e-mera, mera tera hai"</div>
+  <div class="message from-bishmu">Bishmu: "Hanji tera hai"</div>
+</div><div id="blast">BOOM!</div>
+<div id="birthdayMsg" class="hidden">
+  <h2>Do you know today is the birthday of the most beautiful girl?</h2>
+  <button onclick="revealBirthday()">Yes</button>
+  <button onclick="alert('Sad! Try again later.')">No</button>
+</div><div id="wishSection" class="hidden">
+  <h1>Happy Birthday Bisma!</h1>
+  <p>May your day be filled with joy, love, and surprises!</p>
+  <p>"Roshan ho har pal, jahan ho tum wahan ho khushi ka jahan"</p>
+  <img id="cake" src="https://i.ibb.co/7YtZPj6/heart.png" alt="Cake" />
+</div><img id="loveHeart" src="https://i.ibb.co/7YtZPj6/heart.png" alt="Heart" /><audio id="bgMusic" autoplay loop>
+  <source src="https://files.catbox.moe/pox9ry.mp3" type="audio/mpeg">
+  Your browser does not support audio.
+</audio><script>
+  let countdown = 5;
+  const countdownEl = document.getElementById('countdown');
+  const chatEl = document.getElementById('chat');
+  const birthdayMsgEl = document.getElementById('birthdayMsg');
+  const wishSectionEl = document.getElementById('wishSection');
+  const blastEl = document.getElementById('blast');
+
+  function startCountdown() {
+    const interval = setInterval(() => {
+      countdown--;
+      countdownEl.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(interval);
+        countdownEl.style.display = 'none';
+        chatEl.style.display = 'block';
+        setTimeout(() => {
+          blastEl.style.display = 'block';
+          setTimeout(() => {
+            blastEl.style.display = 'none';
+            birthdayMsgEl.classList.remove('hidden');
+          }, 1000);
+        }, 4000);
+      }
+    }, 1000);
+  }
+
+  function revealBirthday() {
+    birthdayMsgEl.classList.add('hidden');
+    wishSectionEl.classList.remove('hidden');
+  }
+
+  startCountdown();
+</script></body>
+</html>
